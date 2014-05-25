@@ -15,14 +15,14 @@ public class OracleSqlParserTest extends TestCase {
 	}
 	
 	public void testSimpleSelectStar() {
-		String sql = "SELECT * FROM table";
+		String sql = "SELECT * FROM my_table";
 		
 		ParsingTree tree = parser.parse(sql);
 		
 		List<TableReference> tables = tree.getTableReferences();
 		assertEquals(1, tables.size());
 		TableReference table = tables.get(0);
-		assertEquals("table", table.getName());
+		assertEquals("my_table", table.getName());
 		
 		List<ColumnReference> columns = tree.getColumnReferences();
 		assertEquals(1, columns.size());
@@ -32,14 +32,14 @@ public class OracleSqlParserTest extends TestCase {
 	}
 	
 	public void testSimpleSelectColumns() {
-		String sql = "SELECT a, b FROM table";
+		String sql = "SELECT a, b FROM my_table";
 		
 		ParsingTree tree = parser.parse(sql);
 		
 		List<TableReference> tables = tree.getTableReferences();
 		assertEquals(1, tables.size());
 		TableReference table = tables.get(0);
-		assertEquals("table", table.getName());
+		assertEquals("my_table", table.getName());
 		
 		List<ColumnReference> columns = tree.getColumnReferences();
 		assertEquals(2, columns.size());
